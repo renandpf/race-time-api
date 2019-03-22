@@ -1,0 +1,26 @@
+#spring:
+#   jpa:
+#      show-sql: false
+#      database-platform: org.hibernate.dialect.MySQL57Dialect
+#      generate-ddl: true      
+#      hibernate:
+#         ddl-auto: update
+#         naming: 
+#            physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+#   jmx:
+#      default-domain: racetime
+
+#   datasource:
+#      poolName: p_orcamento_poll
+#      url: jdbc:mysql://localhost/BD_NAME?serverTimezone=America/Sao_Paulo&useSSL=false&allowPublicKeyRetrieval=true
+#      username: test
+#      password: any
+#      driver-class-name: com.mysql.cj.jdbc.Driver
+#      maxWait: 10000
+#      maxActive: 2
+#      test-on-borrow: true
+#      validation-query: SELECT 1
+server:
+  port: 8081
+  servlet:
+    contextPath: /racetime
