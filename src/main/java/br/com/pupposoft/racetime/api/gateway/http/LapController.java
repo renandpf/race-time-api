@@ -6,19 +6,19 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.pupposoft.racetime.api.gateway.http.json.race.RaceRequestJson;
-import br.com.pupposoft.racetime.api.usecase.CreateRace;
+import br.com.pupposoft.racetime.api.gateway.http.json.lap.LapRequestJson;
+import br.com.pupposoft.racetime.api.usecase.CreateLap;
 
 @Scope("request")
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping(value="race")
-public class RaceController {
+@RequestMapping(value="lap")
+public class LapController {
 	
 	@Autowired
-	private CreateRace createRace;
+	private CreateLap createLap;
 	
-	public void createRace(final RaceRequestJson raceRequestJson) {
+	public void createLap(final LapRequestJson lapRequest) {
 		// TODO - Implementar
 	}
 	
