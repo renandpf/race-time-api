@@ -24,4 +24,12 @@ public class Race {
 		this.pilots = new ArrayList<>();
 		this.laps = new ArrayList<>();
 	}
+	
+	public void addPilot(final Pilot pilot) {
+		this.pilots.add(pilot);
+	}
+	
+	public void addLap(final Lap lap) {
+		this.laps.add(lap);
+	}
 }
