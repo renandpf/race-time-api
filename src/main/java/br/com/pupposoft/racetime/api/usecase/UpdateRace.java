@@ -23,6 +23,7 @@ public class UpdateRace {
 		
 		raceToUpdate.addLap(lap);
 		raceToUpdate.addPilot(lap.getPilot());
+		raceToUpdate.getPilots().stream().filter(p -> p.getId().equals(lap.getPilot().getId())).findFirst().get().addLap(lap);
 		this.dataBaseGateway.updateRace(raceToUpdate);
 		
 //		final boolean raceCompleted = raceToUpdate.getPilots().stream().anyMatch(p -> p.getLaps().size() >= AMOUNT_LAPS_TO_FINISH_RACE);

@@ -2,7 +2,10 @@ package br.com.pupposoft.racetime.api.domains;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import br.com.pupposoft.racetime.api.domains.enums.RaceStatus;
 import lombok.Getter;
@@ -14,14 +17,14 @@ public class Race {
 	private LocalDateTime finish;
 	private RaceStatus status;
 	
-	private List<Pilot> pilots;
+	private Set<Pilot> pilots;
 	private List<Lap> laps;
 
 	
 	public Race(final LocalDateTime start) {
 		this.start = start;
 		this.status = RaceStatus.STARTED;
-		this.pilots = new ArrayList<>();
+		this.pilots = new LinkedHashSet<>();
 		this.laps = new ArrayList<>();
 	}
 	
