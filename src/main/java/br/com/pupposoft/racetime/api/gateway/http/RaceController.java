@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.pupposoft.racetime.api.gateway.http.json.race.RaceRequestJson;
-import br.com.pupposoft.racetime.api.usecase.CreateRace;
+import br.com.pupposoft.racetime.api.usecase.GetCurrentRaceOrCreateRaceNew;
 
 @Scope("request")
 @RestController
@@ -16,7 +16,7 @@ import br.com.pupposoft.racetime.api.usecase.CreateRace;
 public class RaceController {
 	
 	@Autowired
-	private CreateRace createRace;
+	private GetCurrentRaceOrCreateRaceNew createRace;
 	
 	public void createRace(final RaceRequestJson raceRequestJson) {
 		// TODO - Implementar
