@@ -1,5 +1,7 @@
 package br.com.pupposoft.racetime.api.gateway.database.inmemory;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Component;
@@ -9,17 +11,17 @@ import br.com.pupposoft.racetime.api.gateway.database.DataBaseGateway;
 
 @Component
 public class MemoryDataBase implements DataBaseGateway {
-
+	
+	private List<Race> rides = new ArrayList<>(); 
+	
 	@Override
 	public Optional<Race> getCurrentRace() {
-		// TODO Implmenetar
-		return null;
+		return this.rides.stream().filter(Race::isCurrent).findFirst();
 	}
 
 	@Override
-	public Race createNewRace(Race newRace) {
-		// TODO Implementar
-		return null;
+	public void createNewRace(Race newRace) {
+		this.rides.add(newRace);
 	}
 
 }

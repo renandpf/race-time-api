@@ -32,4 +32,13 @@ public class Race {
 	public void addLap(final Lap lap) {
 		this.laps.add(lap);
 	}
+	
+	public void end(final LocalDateTime end) {
+		this.status = RaceStatus.FINISHED;
+		this.finish = end;
+	}
+	
+	public boolean isCurrent() {
+		return RaceStatus.STARTED.equals(this.status);
+	}
 }

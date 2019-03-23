@@ -62,8 +62,6 @@ public class GetCurrentRaceOrCreateRaceNewUnitTest {
     @Test
 	public void getNewSuccess() {
     	when(this.dataBaseGateway.getCurrentRace()).thenReturn(Optional.empty());
-    	when(this.dataBaseGateway.createNewRace(any(Race.class))).thenReturn(new Race());
-    	
     	Race currentRaceReturned =  this.getCurrentRaceOrCreateRaceNew.getOrCreate();
     	
     	assertNotNull(currentRaceReturned);

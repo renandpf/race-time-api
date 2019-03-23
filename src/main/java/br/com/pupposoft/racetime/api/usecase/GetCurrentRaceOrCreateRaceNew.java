@@ -19,7 +19,9 @@ public class GetCurrentRaceOrCreateRaceNew {
 		if(optionalRace.isPresent()) {
 			return optionalRace.get();
 		}
-		return this.dataBaseGateway.createNewRace(this.createNew());
+		final Race newRace = this.createNew();
+		this.dataBaseGateway.createNewRace(newRace);
+		return newRace;
 	}
 	
 	private Race createNew() {
