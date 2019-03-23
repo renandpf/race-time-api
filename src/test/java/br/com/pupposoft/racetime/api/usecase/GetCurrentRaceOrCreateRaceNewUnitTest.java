@@ -41,9 +41,9 @@ public class GetCurrentRaceOrCreateRaceNewUnitTest {
 	public void getCurrentSuccess() {
     	final LocalDateTime startCurrent = LocalDateTime.of(2019, Month.MARCH, 3, 10, 0); //2019-03-03T10:00
     	final Race currentRace = new Race(startCurrent);
-    	currentRace.addLap(new Lap());
-    	currentRace.addLap(new Lap());
-    	currentRace.addPilot(new Pilot());
+    	currentRace.addLap(new Lap(1L, LocalDateTime.now(), 10D, new Pilot(1L, "AnyName")));
+    	currentRace.addLap(new Lap(1L, LocalDateTime.now(), 10D, new Pilot(1L, "AnyName")));
+    	currentRace.addPilot(new Pilot(1L, "AnyName"));
     	
     	when(this.dataBaseGateway.getCurrentRace()).thenReturn(Optional.of(currentRace));
     	

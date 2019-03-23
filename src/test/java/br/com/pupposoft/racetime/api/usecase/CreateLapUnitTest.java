@@ -2,6 +2,8 @@ package br.com.pupposoft.racetime.api.usecase;
 
 import static org.mockito.Mockito.verify;
 
+import java.time.LocalDateTime;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -13,6 +15,7 @@ import org.mockito.internal.verification.VerificationModeFactory;
 import static org.mockito.Mockito.*;
 
 import br.com.pupposoft.racetime.api.domains.Lap;
+import br.com.pupposoft.racetime.api.domains.Pilot;
 import br.com.pupposoft.racetime.api.domains.Race;
 
 public class CreateLapUnitTest {
@@ -33,7 +36,7 @@ public class CreateLapUnitTest {
 	
     @Test
 	public void createWithSuccess() {
-		final Lap newLap = new Lap();
+		final Lap newLap = new Lap(1L, LocalDateTime.now(), 10D, new Pilot(1L, "AnyName"));
 		this.createLap.create(newLap);
     	
 		verify(this.getCurrentRaceOrCreateNew, VerificationModeFactory.times(1)).getOrCreate();

@@ -24,4 +24,9 @@ public class MemoryDataBase implements DataBaseGateway {
 		this.rides.add(newRace);
 	}
 
+	@Override
+	public void updateRace(Race race) {
+		// TODO Auto-generated method stub
+	}
+
 }

@@ -1,14 +1,37 @@
 package br.com.pupposoft.racetime.api.usecase;
 
+import java.time.LocalDateTime;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.pupposoft.racetime.api.domains.Lap;
 import br.com.pupposoft.racetime.api.domains.Race;
+import br.com.pupposoft.racetime.api.gateway.database.DataBaseGateway;
 
 @Service
 public class UpdateRace {
-
-	public void update(final Race race, final Lap lap) {
-		//TODO - implementar
+	public static final int AMOUNT_LAPS_TO_FINISH_RACE = 4;
+	
+	@Autowired
+	private DataBaseGateway dataBaseGateway;
+	
+	@Autowired
+	private GetCurrentRaceOrCreateRaceNew getCurrentRaceOrCreateRaceNew;
+	
+	public void update(final Race raceToUpdate, final Lap lap) {
+		
+		raceToUpdate.addLap(lap);
+		raceToUpdate.addPilot(lap.getPilot());
+		this.dataBaseGateway.updateRace(raceToUpdate);
+		
+//		final boolean raceCompleted = raceToUpdate.getPilots().stream().anyMatch(p -> p.getLaps().size() >= AMOUNT_LAPS_TO_FINISH_RACE);
+//		if(raceCompleted) {
+//			raceToUpdate.end(LocalDateTime.now());
+//			this.dataBaseGateway.updateRace(raceToUpdate);
+//			final Race newRace = this.getCurrentRaceOrCreateRaceNew.getOrCreate();
+//			newRace.addLap(lap);
+//			newRace.addPilot(lap.getPilot());
+//		}
 	}
 }
