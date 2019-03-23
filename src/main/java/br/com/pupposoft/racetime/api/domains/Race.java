@@ -18,8 +18,8 @@ public class Race {
 	private List<Lap> laps;
 
 	
-	public Race() {
-		this.start = LocalDateTime.now();
+	public Race(final LocalDateTime start) {
+		this.start = start;
 		this.status = RaceStatus.STARTED;
 		this.pilots = new ArrayList<>();
 		this.laps = new ArrayList<>();

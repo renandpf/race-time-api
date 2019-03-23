@@ -2,6 +2,8 @@ package br.com.pupposoft.racetime.api.usecase;
 
 import static org.mockito.Mockito.verify;
 
+import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.Optional;
 
 import org.junit.Before;
@@ -37,10 +39,10 @@ public class GetCurrentRaceOrCreateRaceNewUnitTest {
 	
     @Test
 	public void getCurrentSuccess() {
-    	final Race currentRace = new Race();
+    	final LocalDateTime startCurrent = LocalDateTime.of(2019, Month.MARCH, 3, 10, 0); //2019-03-03T10:00
+    	final Race currentRace = new Race(startCurrent);
     	currentRace.addLap(new Lap());
     	currentRace.addLap(new Lap());
-    	
     	currentRace.addPilot(new Pilot());
     	
     	when(this.dataBaseGateway.getCurrentRace()).thenReturn(Optional.of(currentRace));

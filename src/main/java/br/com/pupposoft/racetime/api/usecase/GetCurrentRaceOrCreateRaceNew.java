@@ -1,5 +1,6 @@
 package br.com.pupposoft.racetime.api.usecase;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ public class GetCurrentRaceOrCreateRaceNew {
 	}
 	
 	private Race createNew() {
-		final Race newRace = new Race();
+		final Race newRace = new Race(LocalDateTime.now());
 		
 		return newRace;
 	}
