@@ -26,8 +26,7 @@ public class UpdateRace {
 	}
 
 	private Race checkAndCloseRace(Race raceToUpdate) {
-		final boolean raceCompleted = this.isRaceCompleted(raceToUpdate);
-		if(raceCompleted) {
+		if(this.isRaceCompleted(raceToUpdate)) {
 			raceToUpdate.end(LocalDateTime.now());
 			//raceToUpdate = this.getCurrentRaceOrCreateRaceNew.getOrCreate();
 		}

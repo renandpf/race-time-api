@@ -50,6 +50,7 @@ public class GetCurrentRaceOrCreateRaceNewUnitTest {
     	assertNotNull(currentRaceReturned);
     	assertNotNull(currentRaceReturned.getStart());
     	assertNull(currentRaceReturned.getFinish());
+    	assertNull(currentRaceReturned.getClose());
     	assertNotNull(currentRaceReturned.getPilots());
     	assertEquals(1, currentRaceReturned.getPilots().size());
     	

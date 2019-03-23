@@ -12,6 +12,7 @@ public class Race {
 	private Long id;
 	private LocalDateTime start;
 	private LocalDateTime finish;
+	private LocalDateTime close;
 	private RaceStatus status;
 	
 	private Set<Pilot> pilots;
@@ -29,6 +30,11 @@ public class Race {
 	public void end(final LocalDateTime end) {
 		this.status = RaceStatus.FINISHED;
 		this.finish = end;
+	}
+	
+	public void close(final LocalDateTime close) {
+		this.status = RaceStatus.CLOSE;
+		this.close = close;
 	}
 	
 	public boolean isCurrent() {
