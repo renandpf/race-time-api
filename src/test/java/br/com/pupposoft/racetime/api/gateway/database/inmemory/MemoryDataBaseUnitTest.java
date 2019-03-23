@@ -1,5 +1,7 @@
 package br.com.pupposoft.racetime.api.gateway.database.inmemory;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.time.LocalDateTime;
@@ -9,6 +11,7 @@ import java.util.Optional;
 import org.junit.Test;
 
 import br.com.pupposoft.racetime.api.domains.Race;
+import br.com.pupposoft.racetime.api.domains.enums.RaceStatus;
 
 public class MemoryDataBaseUnitTest {
 	private MemoryDataBase memoryDataBase = new MemoryDataBase();
@@ -35,6 +38,8 @@ public class MemoryDataBaseUnitTest {
 		
 		final Optional<Race> currentRaceOptional = this.memoryDataBase.getCurrentRace();
 		assertTrue(currentRaceOptional.isPresent());
-		// TODO - continuar
+		assertEquals(startCurrent, currentRaceOptional.get().getStart());
+		assertNull(currentRaceOptional.get().getFinish());
+		assertEquals(RaceStatus.STARTED, currentRaceOptional.get().getStatus());
 	}
 }
