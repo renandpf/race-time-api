@@ -1,6 +1,7 @@
 package br.com.pupposoft.racetime.api.domains;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.pupposoft.racetime.api.domains.enums.RaceStatus;
@@ -15,4 +16,12 @@ public class Race {
 	
 	private List<Pilot> pilots;
 	private List<Lap> laps;
+
+	
+	public Race() {
+		this.start = LocalDateTime.now();
+		this.status = RaceStatus.STARTED;
+		this.pilots = new ArrayList<>();
+		this.laps = new ArrayList<>();
+	}
 }
