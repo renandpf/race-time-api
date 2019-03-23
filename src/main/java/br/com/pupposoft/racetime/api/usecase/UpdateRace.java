@@ -1,7 +1,5 @@
 package br.com.pupposoft.racetime.api.usecase;
 
-import java.time.LocalDateTime;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,8 +18,6 @@ public class UpdateRace {
 	private GetCurrentRaceOrCreateRaceNew getCurrentRaceOrCreateRaceNew;
 	
 	public void update(final Race raceToUpdate, final Lap lap) {
-		
-		raceToUpdate.addLap(lap);
 		raceToUpdate.addPilot(lap.getPilot());
 		raceToUpdate.getPilots().stream().filter(p -> p.getId().equals(lap.getPilot().getId())).findFirst().get().addLap(lap);
 		this.dataBaseGateway.updateRace(raceToUpdate);

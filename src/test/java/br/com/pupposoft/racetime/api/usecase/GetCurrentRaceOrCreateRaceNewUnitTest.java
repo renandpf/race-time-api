@@ -41,8 +41,6 @@ public class GetCurrentRaceOrCreateRaceNewUnitTest {
 	public void getCurrentSuccess() {
     	final LocalDateTime startCurrent = LocalDateTime.of(2019, Month.MARCH, 3, 10, 0); //2019-03-03T10:00
     	final Race currentRace = new Race(startCurrent);
-    	currentRace.addLap(new Lap(1L, LocalDateTime.now(), 10D, new Pilot(1L, "AnyName")));
-    	currentRace.addLap(new Lap(1L, LocalDateTime.now(), 10D, new Pilot(1L, "AnyName")));
     	currentRace.addPilot(new Pilot(1L, "AnyName"));
     	
     	when(this.dataBaseGateway.getCurrentRace()).thenReturn(Optional.of(currentRace));
@@ -52,8 +50,6 @@ public class GetCurrentRaceOrCreateRaceNewUnitTest {
     	assertNotNull(currentRaceReturned);
     	assertNotNull(currentRaceReturned.getStart());
     	assertNull(currentRaceReturned.getFinish());
-    	assertNotNull(currentRaceReturned.getLaps());
-    	assertEquals(2, currentRaceReturned.getLaps().size());
     	assertNotNull(currentRaceReturned.getPilots());
     	assertEquals(1, currentRaceReturned.getPilots().size());
     	
@@ -69,8 +65,6 @@ public class GetCurrentRaceOrCreateRaceNewUnitTest {
     	assertNotNull(currentRaceReturned);
     	assertNotNull(currentRaceReturned.getStart());
     	assertNull(currentRaceReturned.getFinish());
-    	assertNotNull(currentRaceReturned.getLaps());
-    	assertEquals(0, currentRaceReturned.getLaps().size());
     	assertNotNull(currentRaceReturned.getPilots());
     	assertEquals(0, currentRaceReturned.getPilots().size());
     	

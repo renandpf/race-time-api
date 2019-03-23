@@ -1,10 +1,7 @@
 package br.com.pupposoft.racetime.api.domains;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Set;
 
 import br.com.pupposoft.racetime.api.domains.enums.RaceStatus;
@@ -18,22 +15,15 @@ public class Race {
 	private RaceStatus status;
 	
 	private Set<Pilot> pilots;
-	private List<Lap> laps;
-
 	
 	public Race(final LocalDateTime start) {
 		this.start = start;
 		this.status = RaceStatus.STARTED;
 		this.pilots = new LinkedHashSet<>();
-		this.laps = new ArrayList<>();
 	}
 	
 	public void addPilot(final Pilot pilot) {
 		this.pilots.add(pilot);
-	}
-	
-	public void addLap(final Lap lap) {
-		this.laps.add(lap);
 	}
 	
 	public void end(final LocalDateTime end) {
