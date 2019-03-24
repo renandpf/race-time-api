@@ -153,7 +153,7 @@ public class UpdateRaceUnitTest {
     	final Lap line_14 = new Lap(3L, LocalDateTime.now(), 43.287D, new Pilot(23L, "M.WEBBER"));//1:04.287
     	final Lap line_15 = new Lap(3L, LocalDateTime.now(), 40.504D, new Pilot(15L, "F.ALONSO"));//1:08.704
     	final Lap line_16 = new Lap(1L, LocalDateTime.now(), 13.169D, new Pilot(11L, "S.VETTEL"));//3:31.315
-    	final Lap line_17 = new Lap(4L, LocalDateTime.now(), 44.321D, new Pilot(38L, "F.MASSA"));//1:02.787
+    	final Lap line_17 = new Lap(4L, LocalDateTime.now(), 44.321D, new Pilot(38L, "F.MASS"));//1:02.787
     	final Lap line_18 = new Lap(4L, LocalDateTime.now(), 43.474D, new Pilot(33L, "R.BARRICHELLO"));//1:04.010
     	final Lap line_19 = new Lap(4L, LocalDateTime.now(), 44.118D, new Pilot(2L, "K.RAIKKONEN"));//1:03.076
     	final Lap line_20 = new Lap(4L, LocalDateTime.now(), 43.335D, new Pilot(23L, "M.WEBBER"));//1:04.216
@@ -194,11 +194,11 @@ public class UpdateRaceUnitTest {
     	
     	
     	//38 - F.MASSA
-    	final Pilot pilot = raceNotClose.getPilots().stream().filter(p -> p.getId().equals(38L)).findFirst().get();
+    	Pilot pilot = raceNotClose.getPilots().stream().filter(p -> p.getId().equals(38L)).findFirst().get();
     	assertEquals(38, pilot.getId(), 0);
     	assertEquals("F.MASSA", pilot.getNome());
     	assertEquals(4, pilot.getLaps().size());
-    	final List<Lap> laps = pilot.getLaps();
+    	List<Lap> laps = pilot.getLaps();
     	assertEquals(1L, laps.get(0).getNumber(), 0);
     	assertEquals(38L, laps.get(0).getPilot().getId(), 0);
     	assertEquals(44.275, laps.get(0).getAverageSpeed(), 0);
@@ -213,23 +213,99 @@ public class UpdateRaceUnitTest {
     	assertEquals(44.321, laps.get(3).getAverageSpeed(), 0);
 
     	//33 - R.BARRICHELLO
-    	final Pilot rBarrichelo = raceNotClose.getPilots().stream().filter(p -> p.getId().equals(33L)).findFirst().get();
+    	pilot = raceNotClose.getPilots().stream().filter(p -> p.getId().equals(33L)).findFirst().get();
+    	assertEquals(33, pilot.getId(), 0);
+    	assertEquals("R.BARRICHELLO", pilot.getNome());
+    	assertEquals(4, pilot.getLaps().size());
+    	laps = pilot.getLaps();
+    	assertEquals(1L, laps.get(0).getNumber(), 0);
+    	assertEquals(33L, laps.get(0).getPilot().getId(), 0);
+    	assertEquals(43.243, laps.get(0).getAverageSpeed(), 0);
+    	assertEquals(2L, laps.get(1).getNumber(), 0);
+    	assertEquals(33L, laps.get(1).getPilot().getId(), 0);
+    	assertEquals(43.480, laps.get(1).getAverageSpeed(), 0);
+    	assertEquals(3L, laps.get(2).getNumber(), 0);
+    	assertEquals(33L, laps.get(2).getPilot().getId(), 0);
+    	assertEquals(43.675, laps.get(2).getAverageSpeed(), 0);
+    	assertEquals(4L, laps.get(3).getNumber(), 0);
+    	assertEquals(33L, laps.get(3).getPilot().getId(), 0);
+    	assertEquals(43.474, laps.get(3).getAverageSpeed(), 0);
+
     	
     	//2 - K.RAIKKONEN
-    	final Pilot kRaikkone = raceNotClose.getPilots().stream().filter(p -> p.getId().equals(2L)).findFirst().get();
+    	pilot = raceNotClose.getPilots().stream().filter(p -> p.getId().equals(2L)).findFirst().get();
+    	assertEquals(2L, pilot.getId(), 0);
+    	assertEquals("K.RAIKKONEN", pilot.getNome());
+    	assertEquals(4, pilot.getLaps().size());
+    	laps = pilot.getLaps();
+    	assertEquals(1L, laps.get(0).getNumber(), 0);
+    	assertEquals(2L, laps.get(0).getPilot().getId(), 0);
+    	assertEquals(43.408, laps.get(0).getAverageSpeed(), 0);
+    	assertEquals(2L, laps.get(1).getNumber(), 0);
+    	assertEquals(2L, laps.get(1).getPilot().getId(), 0);
+    	assertEquals(43.493, laps.get(1).getAverageSpeed(), 0);
+    	assertEquals(3L, laps.get(2).getNumber(), 0);
+    	assertEquals(2L, laps.get(2).getPilot().getId(), 0);
+    	assertEquals(43.490, laps.get(2).getAverageSpeed(), 0);
+    	assertEquals(4L, laps.get(3).getNumber(), 0);
+    	assertEquals(2L, laps.get(3).getPilot().getId(), 0);
+    	assertEquals(44.118D, laps.get(3).getAverageSpeed(), 0);
+
     	
     	//23 - M.WEBBER
-    	final Pilot mWebber = raceNotClose.getPilots().stream().filter(p -> p.getId().equals(23L)).findFirst().get();
+    	pilot = raceNotClose.getPilots().stream().filter(p -> p.getId().equals(23L)).findFirst().get();
+    	assertEquals(23L, pilot.getId(), 0);
+    	assertEquals("M.WEBBER", pilot.getNome());
+    	assertEquals(4, pilot.getLaps().size());
+    	laps = pilot.getLaps();
+    	assertEquals(1L, laps.get(0).getNumber(), 0);
+    	assertEquals(23L, laps.get(0).getPilot().getId(), 0);
+    	assertEquals(43.202, laps.get(0).getAverageSpeed(), 0);
+    	assertEquals(2L, laps.get(1).getNumber(), 0);
+    	assertEquals(23L, laps.get(1).getPilot().getId(), 0);
+    	assertEquals(42.941, laps.get(1).getAverageSpeed(), 0);
+    	assertEquals(3L, laps.get(2).getNumber(), 0);
+    	assertEquals(23L, laps.get(2).getPilot().getId(), 0);
+    	assertEquals(43.287, laps.get(2).getAverageSpeed(), 0);
+    	assertEquals(4L, laps.get(3).getNumber(), 0);
+    	assertEquals(23L, laps.get(3).getPilot().getId(), 0);
+    	assertEquals(43.335D, laps.get(3).getAverageSpeed(), 0);
     	
     	//15 - F.ALONSO
-    	final Pilot fAlonso = raceNotClose.getPilots().stream().filter(p -> p.getId().equals(15L)).findFirst().get();
+    	pilot = raceNotClose.getPilots().stream().filter(p -> p.getId().equals(15L)).findFirst().get();
+    	assertEquals(15L, pilot.getId(), 0);
+    	assertEquals("F.ALONSO", pilot.getNome());
+    	assertEquals(4, pilot.getLaps().size());
+    	laps = pilot.getLaps();
+    	assertEquals(1L, laps.get(0).getNumber(), 0);
+    	assertEquals(15L, laps.get(0).getPilot().getId(), 0);
+    	assertEquals(35.470D, laps.get(0).getAverageSpeed(), 0);
+    	assertEquals(2L, laps.get(1).getNumber(), 0);
+    	assertEquals(15L, laps.get(1).getPilot().getId(), 0);
+    	assertEquals(41.528, laps.get(1).getAverageSpeed(), 0);
+    	assertEquals(3L, laps.get(2).getNumber(), 0);
+    	assertEquals(15L, laps.get(2).getPilot().getId(), 0);
+    	assertEquals(40.504D, laps.get(2).getAverageSpeed(), 0);
+    	assertEquals(4L, laps.get(3).getNumber(), 0);
+    	assertEquals(15L, laps.get(3).getPilot().getId(), 0);
+    	assertEquals(34.763D, laps.get(3).getAverageSpeed(), 0);
     	
     	//11 - S.VETTEL
-    	final Pilot sVettel = raceNotClose.getPilots().stream().filter(p -> p.getId().equals(11L)).findFirst().get();
-    	
-//    	assertEquals(3L, raceNotFinished.getPilots().stream().filter(p -> p.getId().equals(pilot_1.getId())).findFirst().get().getLaps().size(), 0);
-//    	assertEquals(2L, raceNotFinished.getPilots().stream().filter(p -> p.getId().equals(pilot_2.getId())).findFirst().get().getLaps().size(), 0);
-    	
+    	pilot = raceNotClose.getPilots().stream().filter(p -> p.getId().equals(11L)).findFirst().get();
+    	assertEquals(11L, pilot.getId(), 0);
+    	assertEquals("S.VETTEL", pilot.getNome());
+    	assertEquals(3, pilot.getLaps().size());
+    	laps = pilot.getLaps();
+    	assertEquals(1L, laps.get(0).getNumber(), 0);
+    	assertEquals(11L, laps.get(0).getPilot().getId(), 0);
+    	assertEquals(13.169D, laps.get(0).getAverageSpeed(), 0);
+    	assertEquals(2L, laps.get(1).getNumber(), 0);
+    	assertEquals(11L, laps.get(1).getPilot().getId(), 0);
+    	assertEquals(28.435, laps.get(1).getAverageSpeed(), 0);
+    	assertEquals(3L, laps.get(2).getNumber(), 0);
+    	assertEquals(11L, laps.get(2).getPilot().getId(), 0);
+    	assertEquals(35.633D, laps.get(2).getAverageSpeed(), 0);
+
     	verify(this.dataBaseGateway, VerificationModeFactory.times(23)).updateRace(raceNotClose);
     }
 }
