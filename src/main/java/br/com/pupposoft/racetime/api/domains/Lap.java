@@ -16,11 +16,16 @@ public class Lap {
 	private Pilot pilot;
 	private Race race;
 	
-	public Lap(Long number, LocalTime time, Double averageSpeed, Pilot pilot) {
+	public Lap(	final Long number, 
+				final LocalTime time, 
+				final Duration duration, 
+				final Double averageSpeed, 
+				final Pilot pilot) {
 		super();
 		this.number = number;
 		this.time = time;
 		this.averageSpeed = averageSpeed;
 		this.pilot = pilot;
+		this.duration = duration;
 	}
 }
