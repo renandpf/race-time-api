@@ -39,9 +39,9 @@ public class MemoryDataBaseUnitTest {
 		
 		final Optional<Race> currentRaceOptional = this.memoryDataBase.getCurrentRace();
 		assertTrue(currentRaceOptional.isPresent());
-		assertEquals(startCurrent, currentRaceOptional.get().getStart());
+		assertEquals(startCurrent, currentRaceOptional.get().getOpen());
 		assertNull(currentRaceOptional.get().getFinish());
-		assertEquals(RaceStatus.STARTED, currentRaceOptional.get().getStatus());
+		assertEquals(RaceStatus.OPEN, currentRaceOptional.get().getStatus());
 	}
 	
 	@Test

@@ -48,7 +48,7 @@ public class GetCurrentRaceOrCreateRaceNewUnitTest {
     	Race currentRaceReturned =  this.getCurrentRaceOrCreateRaceNew.getOrCreate();
     	
     	assertNotNull(currentRaceReturned);
-    	assertNotNull(currentRaceReturned.getStart());
+    	assertNotNull(currentRaceReturned.getOpen());
     	assertNull(currentRaceReturned.getFinish());
     	assertNull(currentRaceReturned.getClose());
     	assertNotNull(currentRaceReturned.getPilots());
@@ -64,7 +64,7 @@ public class GetCurrentRaceOrCreateRaceNewUnitTest {
     	Race currentRaceReturned =  this.getCurrentRaceOrCreateRaceNew.getOrCreate();
     	
     	assertNotNull(currentRaceReturned);
-    	assertNotNull(currentRaceReturned.getStart());
+    	assertNotNull(currentRaceReturned.getOpen());
     	assertNull(currentRaceReturned.getFinish());
     	assertNotNull(currentRaceReturned.getPilots());
     	assertEquals(0, currentRaceReturned.getPilots().size());

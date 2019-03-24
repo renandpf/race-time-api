@@ -41,8 +41,8 @@ public class UpdateRaceUnitTest {
     	this.updateRace.update(raceNotFinished, lap);
     	
     	assertEquals(1, raceNotFinished.getPilots().size());
-    	assertEquals(RaceStatus.STARTED, raceNotFinished.getStatus());
-    	assertNotNull(raceNotFinished.getStart());
+    	assertEquals(RaceStatus.OPEN, raceNotFinished.getStatus());
+    	assertNotNull(raceNotFinished.getOpen());
     	assertNull(raceNotFinished.getFinish());
     	assertNull(raceNotFinished.getClose());
     	assertEquals(1L, raceNotFinished.getPilots().iterator().next().getId(), 0);
@@ -63,8 +63,8 @@ public class UpdateRaceUnitTest {
     	this.updateRace.update(raceNotFinished, lap);
     	
     	assertEquals(1, raceNotFinished.getPilots().size());
-    	assertEquals(RaceStatus.STARTED, raceNotFinished.getStatus());
-    	assertNotNull(raceNotFinished.getStart());
+    	assertEquals(RaceStatus.OPEN, raceNotFinished.getStatus());
+    	assertNotNull(raceNotFinished.getOpen());
     	assertNull(raceNotFinished.getFinish());
     	assertNull(raceNotFinished.getClose());
     	assertNotNull(raceNotFinished.getPilots().iterator().next().getLaps());
@@ -95,8 +95,8 @@ public class UpdateRaceUnitTest {
     	this.updateRace.update(raceNotFinished, lap);
     	
     	assertEquals(2, raceNotFinished.getPilots().size());
-    	assertEquals(RaceStatus.STARTED, raceNotFinished.getStatus());
-    	assertNotNull(raceNotFinished.getStart());
+    	assertEquals(RaceStatus.OPEN, raceNotFinished.getStatus());
+    	assertNotNull(raceNotFinished.getOpen());
     	assertNull(raceNotFinished.getFinish());
     	assertNull(raceNotFinished.getClose());
     	assertNotNull(raceNotFinished.getPilots().iterator().next().getLaps());
@@ -123,7 +123,7 @@ public class UpdateRaceUnitTest {
 
     	assertEquals(1, raceToFinish.getPilots().size());
     	assertEquals(RaceStatus.FINISHED, raceToFinish.getStatus());
-    	assertNotNull(raceToFinish.getStart());
+    	assertNotNull(raceToFinish.getOpen());
     	assertNotNull(raceToFinish.getFinish());
     	assertNull(raceToFinish.getClose());
     	assertEquals(1L, raceToFinish.getPilots().iterator().next().getId(), 0);
@@ -187,7 +187,7 @@ public class UpdateRaceUnitTest {
     	
     	assertEquals(6, raceNotClose.getPilots().size());
     	assertEquals(RaceStatus.FINISHED, raceNotClose.getStatus());
-    	assertNotNull(raceNotClose.getStart());
+    	assertNotNull(raceNotClose.getOpen());
     	assertNotNull(raceNotClose.getFinish());
     	assertNull(raceNotClose.getClose());
     	assertNotNull(raceNotClose.getPilots().iterator().next().getLaps());

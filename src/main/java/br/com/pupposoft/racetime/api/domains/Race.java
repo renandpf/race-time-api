@@ -10,7 +10,7 @@ import lombok.Getter;
 @Getter
 public class Race {
 	private Long id;
-	private LocalDateTime start;
+	private LocalDateTime open;
 	private LocalDateTime finish;
 	private LocalDateTime close;
 	private RaceStatus status;
@@ -18,8 +18,8 @@ public class Race {
 	private Set<Pilot> pilots;
 	
 	public Race(final LocalDateTime start) {
-		this.start = start;
-		this.status = RaceStatus.STARTED;
+		this.open = start;
+		this.status = RaceStatus.OPEN;
 		this.pilots = new LinkedHashSet<>();
 	}
 	
@@ -38,6 +38,6 @@ public class Race {
 	}
 	
 	public boolean isCurrent() {
-		return RaceStatus.STARTED.equals(this.status);
+		return RaceStatus.OPEN.equals(this.status);
 	}
 }
