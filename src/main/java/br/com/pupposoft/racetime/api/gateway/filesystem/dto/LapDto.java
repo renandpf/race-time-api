@@ -19,11 +19,36 @@ public class LapDto {
 		super();
 		final String timeStr = line.substring(0, 12).trim();
 		final String pilotCodeStr = line.substring(18, 21).trim();
-		final String pilotNameStr = line.substring(24, 58).trim();
-		//final String numberStr = line.substring(58, 66).trim(); //Se não fosse tabulação
-		final String numberStr = line.substring(58, 60).trim();
-		final String durationStr = line.substring(60, 93).trim();
-		final String avaregeStr = line.substring(93, line.length()).replace(",", ".").trim();
+		String pilotNameStr = line.substring(24, 58).trim();
+
+		String numberStr = "";
+		String durationStr = "";
+		String avaregeStr = "";
+		
+		final int lineSize = line.lastIndexOf(",");
+		
+		if(lineSize == 74) {
+			numberStr = line.substring(58, 61).trim();
+			durationStr = line.substring(61, 72).trim();
+			avaregeStr = line.substring(72, line.length()).replace(",", ".").trim();
+			
+		}else if(lineSize == 86) {
+			pilotNameStr = line.substring(24, 49).trim();
+			numberStr = line.substring(49, 52).trim();
+			durationStr = line.substring(52, 84).trim();
+			avaregeStr = line.substring(84, line.length()).replace(",", ".").trim();
+			
+		}else if(lineSize == 95) {
+			numberStr = line.substring(58, 61).trim();
+			durationStr = line.substring(61, 93).trim();
+			avaregeStr = line.substring(93, line.length()).replace(",", ".").trim();
+			
+		}else if(lineSize == 106) {
+			numberStr = line.substring(58, 72).trim();
+			durationStr = line.substring(72, 104).trim();
+			avaregeStr = line.substring(104, line.length()).replace(",", ".").trim();
+			
+		}
 		
 		this.time = LocalTime.parse(timeStr);
 		this.pilotCode = Long.valueOf(pilotCodeStr);

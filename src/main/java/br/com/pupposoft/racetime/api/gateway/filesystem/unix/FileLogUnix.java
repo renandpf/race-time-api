@@ -7,9 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import br.com.pupposoft.racetime.api.gateway.filesystem.RaceFileLogGateway;
 import br.com.pupposoft.racetime.api.gateway.filesystem.dto.LapDto;
 
-public class FileLogUnixGateway {
+public class FileLogUnix implements RaceFileLogGateway{
 	
 	public List<LapDto> getLapsFromFile(final String fileName){
 		final List<String> lines = this.fileStreamUsingFiles(fileName);
