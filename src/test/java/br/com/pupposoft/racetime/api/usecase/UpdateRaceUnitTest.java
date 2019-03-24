@@ -5,7 +5,6 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.mockito.Mockito.verify;
 
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -37,7 +36,7 @@ public class UpdateRaceUnitTest {
     
     @Test
     public void updateRaceNotFinished() {
-    	final Race raceNotFinished = new Race(LocalDateTime.now());
+    	final Race raceNotFinished = new Race(LocalTime.now());
     	final Lap lap = new Lap(1L, LocalTime.now(), 10D, new Pilot(1L, "Fulano de Tal"));
     	this.updateRace.update(raceNotFinished, lap);
     	
@@ -55,7 +54,7 @@ public class UpdateRaceUnitTest {
     
     @Test
     public void updateRaceNotFinishedSecondLap() {
-    	final Race raceNotFinished = new Race(LocalDateTime.now());
+    	final Race raceNotFinished = new Race(LocalTime.now());
     	final Lap firstLap = new Lap(1L, LocalTime.now(), 10D, new Pilot(1L, "Fulano de Tal"));
     	raceNotFinished.addPilot(new Pilot(1L, "Fulano de Tal"));
     	raceNotFinished.getPilots().iterator().next().addLap(firstLap);
@@ -76,7 +75,7 @@ public class UpdateRaceUnitTest {
     
     @Test
     public void updateRaceNotFinishedSecondLapTwoPilot() {
-    	final Race raceNotFinished = new Race(LocalDateTime.now());
+    	final Race raceNotFinished = new Race(LocalTime.now());
     	
     	final Pilot pilot_1 = new Pilot(1L, "Fulano de Tal");
     	final Lap firstLap_pilot_1 = new Lap(1L, LocalTime.now(), 10D, pilot_1);
@@ -109,7 +108,7 @@ public class UpdateRaceUnitTest {
     
     @Test
     public void updateRaceFinishingRace() {
-    	final Race raceToFinish = new Race(LocalDateTime.now());
+    	final Race raceToFinish = new Race(LocalTime.now());
     	final Pilot pilot_1 = new Pilot(1L, "Fulano de Tal");
     	raceToFinish.addPilot(pilot_1);
     	final Lap firstLap_pilot_1 = new Lap(1L, LocalTime.now(), 10D, pilot_1);
@@ -136,7 +135,7 @@ public class UpdateRaceUnitTest {
     
     @Test
     public void updateRaceRealTest() {
-    	final Race raceNotClose = new Race(LocalDateTime.now());
+    	final Race raceNotClose = new Race(LocalTime.now());
     	
     	final Lap line_01 = new Lap(1L, LocalTime.of(23, 49, 8, 277), 44.275D, new Pilot(38L, "F.MASSA")); //1:02.852
     	final Lap line_02 = new Lap(1L, LocalTime.of(23, 49, 10, 858), 43.243D, new Pilot(33L, "R.BARRICHELLO")); //1:04.352

@@ -36,10 +36,12 @@ public class CreateLapUnitTest {
 	
     @Test
 	public void createWithSuccess() {
-		final Lap newLap = new Lap(1L, LocalTime.now(), 10D, new Pilot(1L, "AnyName"));
+    	LocalTime now = LocalTime.now();
+    	
+		final Lap newLap = new Lap(1L, now, 10D, new Pilot(1L, "AnyName"));
 		this.createLap.create(newLap);
     	
-		verify(this.getCurrentRaceOrCreateNew, VerificationModeFactory.times(1)).getOrCreate();
+		verify(this.getCurrentRaceOrCreateNew, VerificationModeFactory.times(1)).getOrCreate(now);
 		verify(this.updateRace, VerificationModeFactory.times(1)).update(any(Race.class), eq(newLap));
 	}
 }

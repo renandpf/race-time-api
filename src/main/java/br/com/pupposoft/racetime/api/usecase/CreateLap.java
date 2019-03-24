@@ -15,7 +15,7 @@ public class CreateLap {
 	private UpdateRace updateRace; 
 	
 	public void create(final Lap lap) {
-		final Race race = this.getCurrentRaceOrCreateNew.getOrCreate();
+		final Race race = this.getCurrentRaceOrCreateNew.getOrCreate(lap.getTime());
 		this.updateRace.update(race, lap);
 	}
 }

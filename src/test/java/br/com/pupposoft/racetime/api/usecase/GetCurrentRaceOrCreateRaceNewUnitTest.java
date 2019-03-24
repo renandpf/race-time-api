@@ -2,8 +2,7 @@ package br.com.pupposoft.racetime.api.usecase;
 
 import static org.mockito.Mockito.verify;
 
-import java.time.LocalDateTime;
-import java.time.Month;
+import java.time.LocalTime;
 import java.util.Optional;
 
 import org.junit.Before;
@@ -38,13 +37,13 @@ public class GetCurrentRaceOrCreateRaceNewUnitTest {
 	
     @Test
 	public void getCurrentSuccess() {
-    	final LocalDateTime startCurrent = LocalDateTime.of(2019, Month.MARCH, 3, 10, 0); //2019-03-03T10:00
+    	final LocalTime startCurrent = LocalTime.of(3, 10, 0); //2019-03-03T10:00
     	final Race currentRace = new Race(startCurrent);
     	currentRace.addPilot(new Pilot(1L, "AnyName"));
     	
     	when(this.dataBaseGateway.getCurrentRace()).thenReturn(Optional.of(currentRace));
     	
-    	Race currentRaceReturned =  this.getCurrentRaceOrCreateRaceNew.getOrCreate();
+    	Race currentRaceReturned =  this.getCurrentRaceOrCreateRaceNew.getOrCreate(startCurrent);
     	
     	assertNotNull(currentRaceReturned);
     	assertNotNull(currentRaceReturned.getOpen());
@@ -60,7 +59,7 @@ public class GetCurrentRaceOrCreateRaceNewUnitTest {
     @Test
 	public void getNewSuccess() {
     	when(this.dataBaseGateway.getCurrentRace()).thenReturn(Optional.empty());
-    	Race currentRaceReturned =  this.getCurrentRaceOrCreateRaceNew.getOrCreate();
+    	Race currentRaceReturned =  this.getCurrentRaceOrCreateRaceNew.getOrCreate(LocalTime.now());
     	
     	assertNotNull(currentRaceReturned);
     	assertNotNull(currentRaceReturned.getOpen());
