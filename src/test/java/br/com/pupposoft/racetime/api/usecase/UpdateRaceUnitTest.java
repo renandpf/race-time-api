@@ -137,29 +137,29 @@ public class UpdateRaceUnitTest {
     public void updateRaceRealTest() {
     	final Race raceNotClose = new Race(LocalDateTime.now());
     	
-    	final Lap line_01 = new Lap(1L, LocalDateTime.now(), 44D, new Pilot(38L, "F.MASSA")); //1:02.852
-    	final Lap line_02 = new Lap(1L, LocalDateTime.now(), 43D, new Pilot(33L, "R.BARRICHELLO")); //1:04.352
-    	final Lap line_03 = new Lap(1L, LocalDateTime.now(), 43D, new Pilot(2L, "K.RAIKKONEN"));//1:04.108
-    	final Lap line_04 = new Lap(1L, LocalDateTime.now(), 43D, new Pilot(23L, "M.WEBBER"));//1:04.414 
-    	final Lap line_05 = new Lap(1L, LocalDateTime.now(), 35D, new Pilot(15L, "F.ALONSO"));//1:18.456
-    	final Lap line_06 = new Lap(2L, LocalDateTime.now(), 44D, new Pilot(38L, "F.MASSA"));//1:03.170
-    	final Lap line_07 = new Lap(2L, LocalDateTime.now(), 43D, new Pilot(33L, "R.BARRICHELLO"));//1:04.002
-    	final Lap line_08 = new Lap(2L, LocalDateTime.now(), 43D, new Pilot(2L, "K.RAIKKONEN"));//1:03.982
-    	final Lap line_09 = new Lap(2L, LocalDateTime.now(), 42D, new Pilot(23L, "M.WEBBER"));//1:04.805
-    	final Lap line_10 = new Lap(2L, LocalDateTime.now(), 41D, new Pilot(15L, "F.ALONSO"));//1:07.011
-    	final Lap line_11 = new Lap(3L, LocalDateTime.now(), 44D, new Pilot(38L, "F.MASSA"));//1:02.769
-    	final Lap line_12 = new Lap(3L, LocalDateTime.now(), 43D, new Pilot(33L, "R.BARRICHELLO"));//1:03.716
-    	final Lap line_13 = new Lap(3L, LocalDateTime.now(), 43D, new Pilot(2L, "K.RAIKKONEN"));//1:03.987
-    	final Lap line_14 = new Lap(3L, LocalDateTime.now(), 43D, new Pilot(23L, "M.WEBBER"));//1:04.287
-    	final Lap line_15 = new Lap(3L, LocalDateTime.now(), 40D, new Pilot(15L, "F.ALONSO"));//1:08.704
-    	final Lap line_16 = new Lap(1L, LocalDateTime.now(), 13D, new Pilot(11L, "S.VETTEL"));//3:31.315
-    	final Lap line_17 = new Lap(4L, LocalDateTime.now(), 44D, new Pilot(38L, "F.MASSA"));//1:02.787
-    	final Lap line_18 = new Lap(4L, LocalDateTime.now(), 43D, new Pilot(33L, "R.BARRICHELLO"));//1:04.010
-    	final Lap line_19 = new Lap(4L, LocalDateTime.now(), 44D, new Pilot(2L, "K.RAIKKONEN"));//1:03.076
-    	final Lap line_20 = new Lap(4L, LocalDateTime.now(), 43D, new Pilot(23L, "M.WEBBER"));//1:04.216
-    	final Lap line_21 = new Lap(4L, LocalDateTime.now(), 34D, new Pilot(15L, "F.ALONSO"));//1:20.050
-    	final Lap line_22 = new Lap(2L, LocalDateTime.now(), 28D, new Pilot(11L, "S.VETTEL"));//1:37.864
-    	final Lap line_23 = new Lap(3L, LocalDateTime.now(), 35D, new Pilot(11L, "S.VETTEL"));//1:18.097
+    	final Lap line_01 = new Lap(1L, LocalDateTime.now(), 44.275D, new Pilot(38L, "F.MASSA")); //1:02.852
+    	final Lap line_02 = new Lap(1L, LocalDateTime.now(), 43.243D, new Pilot(33L, "R.BARRICHELLO")); //1:04.352
+    	final Lap line_03 = new Lap(1L, LocalDateTime.now(), 43.408D, new Pilot(2L, "K.RAIKKONEN"));//1:04.108
+    	final Lap line_04 = new Lap(1L, LocalDateTime.now(), 43.202D, new Pilot(23L, "M.WEBBER"));//1:04.414 
+    	final Lap line_05 = new Lap(1L, LocalDateTime.now(), 35.470D, new Pilot(15L, "F.ALONSO"));//1:18.456
+    	final Lap line_06 = new Lap(2L, LocalDateTime.now(), 44.053D, new Pilot(38L, "F.MASSA"));//1:03.170
+    	final Lap line_07 = new Lap(2L, LocalDateTime.now(), 43.480D, new Pilot(33L, "R.BARRICHELLO"));//1:04.002
+    	final Lap line_08 = new Lap(2L, LocalDateTime.now(), 43.493D, new Pilot(2L, "K.RAIKKONEN"));//1:03.982
+    	final Lap line_09 = new Lap(2L, LocalDateTime.now(), 42.941D, new Pilot(23L, "M.WEBBER"));//1:04.805
+    	final Lap line_10 = new Lap(2L, LocalDateTime.now(), 41.528D, new Pilot(15L, "F.ALONSO"));//1:07.011
+    	final Lap line_11 = new Lap(3L, LocalDateTime.now(), 44.334D, new Pilot(38L, "F.MASSA"));//1:02.769
+    	final Lap line_12 = new Lap(3L, LocalDateTime.now(), 43.675D, new Pilot(33L, "R.BARRICHELLO"));//1:03.716
+    	final Lap line_13 = new Lap(3L, LocalDateTime.now(), 43.490D, new Pilot(2L, "K.RAIKKONEN"));//1:03.987
+    	final Lap line_14 = new Lap(3L, LocalDateTime.now(), 43.287D, new Pilot(23L, "M.WEBBER"));//1:04.287
+    	final Lap line_15 = new Lap(3L, LocalDateTime.now(), 40.504D, new Pilot(15L, "F.ALONSO"));//1:08.704
+    	final Lap line_16 = new Lap(1L, LocalDateTime.now(), 13.169D, new Pilot(11L, "S.VETTEL"));//3:31.315
+    	final Lap line_17 = new Lap(4L, LocalDateTime.now(), 44.321D, new Pilot(38L, "F.MASSA"));//1:02.787
+    	final Lap line_18 = new Lap(4L, LocalDateTime.now(), 43.474D, new Pilot(33L, "R.BARRICHELLO"));//1:04.010
+    	final Lap line_19 = new Lap(4L, LocalDateTime.now(), 44.118D, new Pilot(2L, "K.RAIKKONEN"));//1:03.076
+    	final Lap line_20 = new Lap(4L, LocalDateTime.now(), 43.335D, new Pilot(23L, "M.WEBBER"));//1:04.216
+    	final Lap line_21 = new Lap(4L, LocalDateTime.now(), 34.763D, new Pilot(15L, "F.ALONSO"));//1:20.050
+    	final Lap line_22 = new Lap(2L, LocalDateTime.now(), 28.435D, new Pilot(11L, "S.VETTEL"));//1:37.864
+    	final Lap line_23 = new Lap(3L, LocalDateTime.now(), 35.633D, new Pilot(11L, "S.VETTEL"));//1:18.097
     	
     	this.updateRace.update(raceNotClose, line_01);
     	this.updateRace.update(raceNotClose, line_02);
@@ -199,8 +199,18 @@ public class UpdateRaceUnitTest {
     	assertEquals("F.MASSA", pilot.getNome());
     	assertEquals(4, pilot.getLaps().size());
     	final List<Lap> laps = pilot.getLaps();
-    	//laps.get(0).getNumber();
-    	// TODO - Continuar
+    	assertEquals(1L, laps.get(0).getNumber(), 0);
+    	assertEquals(38L, laps.get(0).getPilot().getId(), 0);
+    	assertEquals(44.275, laps.get(0).getAverageSpeed(), 0);
+    	assertEquals(2L, laps.get(1).getNumber(), 0);
+    	assertEquals(38L, laps.get(1).getPilot().getId(), 0);
+    	assertEquals(44.053, laps.get(1).getAverageSpeed(), 0);
+    	assertEquals(3L, laps.get(2).getNumber(), 0);
+    	assertEquals(38L, laps.get(2).getPilot().getId(), 0);
+    	assertEquals(44.334, laps.get(2).getAverageSpeed(), 0);
+    	assertEquals(4L, laps.get(3).getNumber(), 0);
+    	assertEquals(38L, laps.get(3).getPilot().getId(), 0);
+    	assertEquals(44.321, laps.get(3).getAverageSpeed(), 0);
 
     	//33 - R.BARRICHELLO
     	final Pilot rBarrichelo = raceNotClose.getPilots().stream().filter(p -> p.getId().equals(33L)).findFirst().get();
