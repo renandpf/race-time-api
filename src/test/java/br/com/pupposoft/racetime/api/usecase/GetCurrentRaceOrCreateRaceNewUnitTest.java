@@ -19,7 +19,6 @@ import static org.junit.Assert.assertNull;
 //import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-import br.com.pupposoft.racetime.api.domains.Lap;
 import br.com.pupposoft.racetime.api.domains.Pilot;
 import br.com.pupposoft.racetime.api.domains.Race;
 import br.com.pupposoft.racetime.api.gateway.database.DataBaseGateway;

@@ -1,6 +1,7 @@
 package br.com.pupposoft.racetime.api.domains;
 
-import java.time.LocalDateTime;
+import java.time.Duration;
+import java.time.LocalTime;
 
 import lombok.Getter;
 
@@ -8,13 +9,14 @@ import lombok.Getter;
 public class Lap {
 	private Long id;
 	private Long number;
-	private LocalDateTime time;
+	private LocalTime time;
+	private Duration duration;
 	private Double averageSpeed;
 	
 	private Pilot pilot;
 	private Race race;
 	
-	public Lap(Long number, LocalDateTime time, Double averageSpeed, Pilot pilot) {
+	public Lap(Long number, LocalTime time, Double averageSpeed, Pilot pilot) {
 		super();
 		this.number = number;
 		this.time = time;
