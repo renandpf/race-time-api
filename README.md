@@ -29,6 +29,7 @@ Informações técnicas
 
 Pendências, Backlogs e débitos técnicos
 ------------------
+* Implementar telas (angular - outro repositório)
 * Não foram tratados erros nem caminhos alternativos (fallback)
 * Nem todos os cenários de endtoend foram realizados. 
 * Pilotos que não terminam a prova não são classificados em ordem de chegada.
