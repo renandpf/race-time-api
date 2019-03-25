@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import br.com.pupposoft.racetime.api.gateway.filesystem.dto.LapDto;
+import br.com.pupposoft.racetime.api.domains.Lap;
 
 public interface RaceFileLogGateway {
-	public List<LapDto> getLapsFromFile(final String fileName);
+	public List<Lap> getLapsFromFile(final String fileName);
 	public String storeFile(final MultipartFile file);
 }

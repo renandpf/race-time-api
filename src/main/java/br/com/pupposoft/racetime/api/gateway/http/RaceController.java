@@ -3,11 +3,11 @@ package br.com.pupposoft.racetime.api.gateway.http;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.pupposoft.racetime.api.gateway.http.json.race.RaceRequestJson;
-import br.com.pupposoft.racetime.api.usecase.GetCurrentRaceOrCreateRaceNew;
+import br.com.pupposoft.racetime.api.gateway.filesystem.RaceFileLogGateway;
 
 @Scope("request")
 @RestController
@@ -16,10 +16,12 @@ import br.com.pupposoft.racetime.api.usecase.GetCurrentRaceOrCreateRaceNew;
 public class RaceController {
 	
 	@Autowired
-	private GetCurrentRaceOrCreateRaceNew createRace;
+	private RaceFileLogGateway raceFileLogGateway;
 	
-	public void createRace(final RaceRequestJson raceRequestJson) {
-		// TODO - Implementar
+	@GetMapping
+	public void get() {
+		
+		//this.raceFileLogGateway.getLapsFromFile(fileName)
+
 	}
-	
 }

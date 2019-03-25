@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import br.com.pupposoft.racetime.api.domains.Lap;
+import br.com.pupposoft.racetime.api.domains.Pilot;
 import br.com.pupposoft.racetime.api.gateway.filesystem.RaceFileLogGateway;
 import br.com.pupposoft.racetime.api.gateway.filesystem.dto.LapDto;
 
@@ -28,9 +30,15 @@ public class FileLogUnix implements RaceFileLogGateway {
         }
 	}
 	
-	public List<LapDto> getLapsFromFile(final String fileName){
+	public List<Lap> getLapsFromFile(final String fileName){
 		final List<String> lines = this.fileStreamUsingFiles(fileName);
-		return lines.stream().map(LapDto::new).collect(Collectors.toList());
+		final List<LapDto> lapsDto = lines.stream().map(LapDto::new).collect(Collectors.toList());
+		return lapsDto.stream().map(lDto -> {
+			Pilot pilot = new Pilot(lDto.getPilotCode(), lDto.getPilotName());
+			Lap lap = new Lap(lDto.getNumber(), lDto.getTime(), lDto.getDuration(), lDto.getAverage(), pilot);
+			
+			return lap;
+		}).collect(Collectors.toList());
 	}
 	
 	
