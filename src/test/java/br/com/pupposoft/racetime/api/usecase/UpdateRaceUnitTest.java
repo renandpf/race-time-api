@@ -119,17 +119,60 @@ public class UpdateRaceUnitTest {
     	final Lap thirtLap_pilot_1 = new Lap(3L, LocalTime.now(), Duration.ofMinutes(1), 10D, pilot_1);
     	raceToFinish.getPilots().stream().filter(p -> p.getId().equals(pilot_1.getId())).findFirst().get().addLap(thirtLap_pilot_1);
 
+    	final Pilot pilot_2 = new Pilot(2L, "Cilcano de Tal");
+    	raceToFinish.addPilot(pilot_2);
+    	final Lap firstLap_pilot_2 = new Lap(1L, LocalTime.now(), Duration.ofMinutes(1), 10D, pilot_2);
+    	raceToFinish.getPilots().stream().filter(p -> p.getId().equals(pilot_2.getId())).findFirst().get().addLap(firstLap_pilot_2);
+
+    	
     	final Lap lap = new Lap(4L, LocalTime.now(), Duration.ofMinutes(1), 10D, pilot_1);
     	this.updateRace.update(raceToFinish, lap);
 
-    	assertEquals(1, raceToFinish.getPilots().size());
+    	assertEquals(2, raceToFinish.getPilots().size());
     	assertEquals(RaceStatus.FINISHED, raceToFinish.getStatus());
     	assertNotNull(raceToFinish.getOpen());
     	assertNotNull(raceToFinish.getFinish());
     	assertNull(raceToFinish.getClose());
     	assertEquals(1L, raceToFinish.getPilots().iterator().next().getId(), 0);
     	assertNotNull(raceToFinish.getPilots().iterator().next().getLaps());
-    	assertEquals(4L, raceToFinish.getPilots().iterator().next().getLaps().size(), 0);
+    	
+    	verify(this.dataBaseGateway, VerificationModeFactory.times(1)).updateRace(raceToFinish);
+    }
+    
+    @Test
+    public void updateRaceCloseRace() {
+    	final Race raceToFinish = new Race(LocalTime.now());
+    	final Pilot pilot_1 = new Pilot(1L, "Fulano de Tal");
+    	raceToFinish.addPilot(pilot_1);
+    	final Lap firstLap_pilot_1 = new Lap(1L, LocalTime.now(), Duration.ofMinutes(1), 10D, pilot_1);
+    	raceToFinish.getPilots().stream().filter(p -> p.getId().equals(pilot_1.getId())).findFirst().get().addLap(firstLap_pilot_1);
+    	final Lap secondLap_pilot_1 = new Lap(2L, LocalTime.now(), Duration.ofMinutes(1), 10D, pilot_1);
+    	raceToFinish.getPilots().stream().filter(p -> p.getId().equals(pilot_1.getId())).findFirst().get().addLap(secondLap_pilot_1);
+    	final Lap thirtLap_pilot_1 = new Lap(3L, LocalTime.now(), Duration.ofMinutes(1), 10D, pilot_1);
+    	raceToFinish.getPilots().stream().filter(p -> p.getId().equals(pilot_1.getId())).findFirst().get().addLap(thirtLap_pilot_1);
+
+    	final Pilot pilot_2 = new Pilot(2L, "Cilcano de Tal");
+    	raceToFinish.addPilot(pilot_2);
+    	final Lap firstLap_pilot_2 = new Lap(1L, LocalTime.now(), Duration.ofMinutes(1), 10D, pilot_2);
+    	raceToFinish.getPilots().stream().filter(p -> p.getId().equals(pilot_2.getId())).findFirst().get().addLap(firstLap_pilot_2);
+    	final Lap secondLap_pilot_2 = new Lap(2L, LocalTime.now(), Duration.ofMinutes(1), 10D, pilot_2);
+    	raceToFinish.getPilots().stream().filter(p -> p.getId().equals(pilot_2.getId())).findFirst().get().addLap(secondLap_pilot_2);
+    	final Lap thirtLap_pilot_2 = new Lap(3L, LocalTime.now(), Duration.ofMinutes(1), 10D, pilot_2);
+    	raceToFinish.getPilots().stream().filter(p -> p.getId().equals(pilot_2.getId())).findFirst().get().addLap(thirtLap_pilot_2);
+    	final Lap fourtLap_pilot_2 = new Lap(4L, LocalTime.now(), Duration.ofMinutes(1), 10D, pilot_2);
+    	raceToFinish.getPilots().stream().filter(p -> p.getId().equals(pilot_2.getId())).findFirst().get().addLap(fourtLap_pilot_2);
+    	raceToFinish.end(fourtLap_pilot_2.getTime());
+    	
+    	final Lap lap = new Lap(4L, LocalTime.now(), Duration.ofMinutes(1), 10D, pilot_1);
+    	this.updateRace.update(raceToFinish, lap);
+
+    	assertEquals(2, raceToFinish.getPilots().size());
+    	assertEquals(RaceStatus.CLOSE, raceToFinish.getStatus());
+    	assertNotNull(raceToFinish.getOpen());
+    	assertNotNull(raceToFinish.getFinish());
+    	assertNotNull(raceToFinish.getClose());
+    	assertEquals(1L, raceToFinish.getPilots().iterator().next().getId(), 0);
+    	assertNotNull(raceToFinish.getPilots().iterator().next().getLaps());
     	
     	verify(this.dataBaseGateway, VerificationModeFactory.times(1)).updateRace(raceToFinish);
     }

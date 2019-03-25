@@ -9,7 +9,6 @@ import br.com.pupposoft.racetime.api.domains.Lap;
 import br.com.pupposoft.racetime.api.domains.Race;
 import br.com.pupposoft.racetime.api.gateway.database.DataBaseGateway;
 import br.com.pupposoft.racetime.api.gateway.filesystem.RaceFileLogGateway;
-import br.com.pupposoft.racetime.api.gateway.http.json.race.ResponseRaceJson;
 
 @Service
 public class LoadRaceData {

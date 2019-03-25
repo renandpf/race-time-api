@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.pupposoft.racetime.api.domains.Lap;
 import br.com.pupposoft.racetime.api.domains.Race;
+import br.com.pupposoft.racetime.api.domains.enums.RaceStatus;
 import br.com.pupposoft.racetime.api.gateway.database.DataBaseGateway;
 
 @Service
@@ -16,19 +17,27 @@ public class UpdateRace {
 	
 	public void update(Race raceToUpdate, final Lap lap) {
 		this.addLap(raceToUpdate, lap);
-		raceToUpdate = this.checkAndEndRace(raceToUpdate, lap);
+		raceToUpdate = this.checkAndFinishOrCloseRace(raceToUpdate, lap);
 		this.dataBaseGateway.updateRace(raceToUpdate);
 	}
 
-	private Race checkAndEndRace(final Race raceToUpdate, final Lap lap) {
-		if(this.isRaceCompleted(raceToUpdate)) {
+	private Race checkAndFinishOrCloseRace(final Race raceToUpdate, final Lap lap) {
+		if(this.isRaceFinished(lap) && raceToUpdate.getStatus().equals(RaceStatus.OPEN)) {
 			raceToUpdate.end(lap.getTime());
 		}
+		if(this.isRaceClose(raceToUpdate) && raceToUpdate.getStatus().equals(RaceStatus.FINISHED)) {
+			raceToUpdate.close(lap.getTime());
+		}
+		
 		return raceToUpdate;
 	}
 
-	private boolean isRaceCompleted(Race raceToUpdate) {
-		return raceToUpdate.getPilots().stream().anyMatch(p -> p.getLaps().size() >= AMOUNT_LAPS_TO_FINISH_RACE);
+	private boolean isRaceFinished(final Lap lap) {
+		return lap.getNumber() >= AMOUNT_LAPS_TO_FINISH_RACE;
+	}
+	
+	private boolean isRaceClose(Race raceToUpdate) {
+		return !raceToUpdate.getPilots().stream().anyMatch(p -> p.getLaps().size() < AMOUNT_LAPS_TO_FINISH_RACE);
 	}
 
 	private void addLap(final Race raceToUpdate, final Lap lap) {
