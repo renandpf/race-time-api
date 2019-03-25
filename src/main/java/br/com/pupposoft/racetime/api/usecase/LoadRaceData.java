@@ -23,6 +23,13 @@ public class LoadRaceData {
 	private IdentifyBestAndWorstLap identifyBestAndWorstLap;
 	
 	@Autowired
+	private SortByWinner sortByWinner;
+
+	@Autowired
+	private CalculateDurationLapsByPilot calculateDurationLapsByPilot;
+
+	
+	@Autowired
 	private DataBaseGateway dataBaseGateway; 
 
 	public Race loadData() {
@@ -30,6 +37,7 @@ public class LoadRaceData {
 		
 		final Race currentRace = this.dataBaseGateway.getCurrentRace().orElseThrow();//TODO - Tratar fallbacks
 		this.identifyBestAndWorstLap.identify(currentRace);
+		this.calculateDurationLapsByPilot.calculate(currentRace);
 		
 		return currentRace;
 	}

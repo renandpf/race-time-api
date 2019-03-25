@@ -3,6 +3,7 @@ package br.com.pupposoft.racetime.api.domains;
 import java.time.Duration;
 import java.time.LocalTime;
 
+import br.com.pupposoft.racetime.api.usecase.UpdateRace;
 import lombok.Getter;
 
 /**
@@ -43,5 +44,9 @@ public class Lap {
 	
 	public void setWorst() {
 		this.worst = true;
+	}
+	
+	public boolean isLast() {
+		return this.number >= UpdateRace.AMOUNT_LAPS_TO_FINISH_RACE;
 	}
 }

@@ -4,9 +4,6 @@ import java.time.LocalTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
-
 import br.com.pupposoft.racetime.api.domains.Race;
 import br.com.pupposoft.racetime.api.domains.enums.RaceStatus;
 import lombok.Getter;
