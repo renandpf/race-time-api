@@ -14,6 +14,7 @@ public class Pilot {
 	private String nome;
 	private List<Lap> laps;
 	private Duration duration;
+	private Double average;
 	public Pilot(final Long id, final String nome) {
 		this.id = id;
 		this.nome = nome;
@@ -26,5 +27,9 @@ public class Pilot {
 	
 	public void setDuration(final Duration duration) {
 		this.duration = duration;
+	}
+	
+	public void setAverage(final Double average) {
+		this.average = average;
 	}
 }

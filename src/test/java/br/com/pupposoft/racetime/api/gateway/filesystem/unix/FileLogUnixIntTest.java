@@ -6,10 +6,12 @@ import java.time.Duration;
 import java.time.LocalTime;
 import java.util.List;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import br.com.pupposoft.racetime.api.domains.Lap;
 
+@Ignore
 public class FileLogUnixIntTest {
 
 	private FileLogUnix fileLogUnix = new FileLogUnix();

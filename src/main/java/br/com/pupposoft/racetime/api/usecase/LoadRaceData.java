@@ -28,6 +28,8 @@ public class LoadRaceData {
 	@Autowired
 	private CalculateDurationLapsByPilot calculateDurationLapsByPilot;
 
+	@Autowired
+	private CalculateAverageByPilot calculateAverageByPilot;
 	
 	@Autowired
 	private DataBaseGateway dataBaseGateway; 
@@ -38,7 +40,8 @@ public class LoadRaceData {
 		final Race currentRace = this.dataBaseGateway.getCurrentRace().orElseThrow();//TODO - Tratar fallbacks
 		this.identifyBestAndWorstLap.identify(currentRace);
 		this.calculateDurationLapsByPilot.calculate(currentRace);
-		this.sortByWinner.sort(currentRace);		
+		this.sortByWinner.sort(currentRace);
+		this.calculateAverageByPilot.calculate(currentRace);
 		
 		return currentRace;
 	}

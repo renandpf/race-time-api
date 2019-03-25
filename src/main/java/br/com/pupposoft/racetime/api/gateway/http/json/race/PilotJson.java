@@ -16,6 +16,7 @@ public class PilotJson {
 	private Long id;
 	private String nome;
 	private Duration duration;
+	private Double average;
 	private List<LapJson> laps;
 
 	
@@ -23,6 +24,7 @@ public class PilotJson {
 		this.id = pilot.getId();
 		this.nome = pilot.getNome();
 		this.duration = pilot.getDuration();
+		this.average = pilot.getAverage();
 		this.laps = pilot.getLaps().stream().map(LapJson::new).collect(Collectors.toList());
 	}
 
