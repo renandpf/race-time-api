@@ -1,5 +1,6 @@
 package br.com.pupposoft.racetime.api.usecase;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -14,7 +15,7 @@ import br.com.pupposoft.racetime.api.domains.Race;
 
 public class IdentifyBestLapUnitTest {
 
-	private IdentifyBestLap identifyBestLap = new IdentifyBestLap(); 
+	private IdentifyBestAndWorstLap identifyBestLap = new IdentifyBestAndWorstLap(); 
 	
 	@Test
 	public void checkeBestLapForPilot() {
@@ -26,7 +27,7 @@ public class IdentifyBestLapUnitTest {
     	anyRace.getPilots().stream().filter(p -> p.getId().equals(pilot_1.getId())).findFirst().get().addLap(firstLap_pilot_1);
     	final Lap secondLap_pilot_1 = new Lap(2L, LocalTime.now(), Duration.between(LocalTime.MIN, LocalTime.parse("00:00:03.000")), 10D, pilot_1);
     	anyRace.getPilots().stream().filter(p -> p.getId().equals(pilot_1.getId())).findFirst().get().addLap(secondLap_pilot_1);
-    	final Lap thirtLap_pilot_1 = new Lap(3L, LocalTime.now(), Duration.between(LocalTime.MIN, LocalTime.parse("00:00:02.000")), 10D, pilot_1);// best
+    	final Lap thirtLap_pilot_1 = new Lap(3L, LocalTime.now(), Duration.between(LocalTime.MIN, LocalTime.parse("00:00:02.000")), 10D, pilot_1);// best * melhor de todas
     	anyRace.getPilots().stream().filter(p -> p.getId().equals(pilot_1.getId())).findFirst().get().addLap(thirtLap_pilot_1);
 
     	final Pilot pilot_2 = new Pilot(2L, "Ciclano de Tal");
@@ -35,7 +36,7 @@ public class IdentifyBestLapUnitTest {
     	anyRace.getPilots().stream().filter(p -> p.getId().equals(pilot_2.getId())).findFirst().get().addLap(firstLap_pilot_2);
     	final Lap secondLap_pilot_2 = new Lap(2L, LocalTime.now(), Duration.between(LocalTime.MIN, LocalTime.parse("00:05:00.000")), 10D, pilot_2);
     	anyRace.getPilots().stream().filter(p -> p.getId().equals(pilot_2.getId())).findFirst().get().addLap(secondLap_pilot_2);
-    	final Lap thirtLap_pilot_2 = new Lap(3L, LocalTime.now(), Duration.between(LocalTime.MIN, LocalTime.parse("00:11:00.000")), 10D, pilot_2);//worst
+    	final Lap thirtLap_pilot_2 = new Lap(3L, LocalTime.now(), Duration.between(LocalTime.MIN, LocalTime.parse("00:11:00.000")), 10D, pilot_2);//worst * pior de todas
     	anyRace.getPilots().stream().filter(p -> p.getId().equals(pilot_2.getId())).findFirst().get().addLap(thirtLap_pilot_2);
     	final Lap fourtLap_pilot_2 = new Lap(4L, LocalTime.now(), Duration.between(LocalTime.MIN, LocalTime.parse("00:06:00.000")), 10D, pilot_2);
     	anyRace.getPilots().stream().filter(p -> p.getId().equals(pilot_2.getId())).findFirst().get().addLap(fourtLap_pilot_2);
@@ -71,6 +72,13 @@ public class IdentifyBestLapUnitTest {
     	//Pilot2#Lap2
     	assertFalse(anyRace.getPilots().stream().filter(p -> p.getId().equals(pilot_2.getId())).findFirst().get().getLaps().get(3).isWorst());
     	assertFalse(anyRace.getPilots().stream().filter(p -> p.getId().equals(pilot_2.getId())).findFirst().get().getLaps().get(3).isBest());
+    	
+    	
+    	final Lap bestOfTheBestsLap = anyRace.getBestLap();
+    	assertEquals(thirtLap_pilot_1.getDuration(), bestOfTheBestsLap.getDuration());
+    	
+    	final Lap wosrtOfTheWosrtsLap = anyRace.getWorstLap();
+    	assertEquals(thirtLap_pilot_2.getDuration(), wosrtOfTheWosrtsLap.getDuration());
 	}
 	
 }

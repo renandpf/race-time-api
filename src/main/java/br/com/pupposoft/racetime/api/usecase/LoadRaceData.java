@@ -20,7 +20,7 @@ public class LoadRaceData {
 	private CreateLap createLap; 
 	
 	@Autowired
-	private IdentifyBestLap identifyBestLap;
+	private IdentifyBestAndWorstLap identifyBestAndWorstLap;
 	
 	@Autowired
 	private DataBaseGateway dataBaseGateway; 
@@ -29,7 +29,7 @@ public class LoadRaceData {
 		loadLapsFromFile();
 		
 		final Race currentRace = this.dataBaseGateway.getCurrentRace().orElseThrow();//TODO - Tratar fallbacks
-		this.identifyBestLap.identify(currentRace);
+		this.identifyBestAndWorstLap.identify(currentRace);
 		
 		return currentRace;
 	}
