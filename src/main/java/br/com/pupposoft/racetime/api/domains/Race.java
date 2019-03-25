@@ -15,11 +15,13 @@ public class Race {
 	private LocalTime close;
 	private RaceStatus status;
 	private Set<Pilot> pilots;
+	private Lap bestLap;
 	
 	public Race(final LocalTime start) {
 		this.open = start;
 		this.status = RaceStatus.OPEN;
 		this.pilots = new LinkedHashSet<>();
+		this.bestLap = null;
 	}
 	
 	public void addPilot(final Pilot pilot) {
@@ -38,5 +40,9 @@ public class Race {
 	
 	public boolean isCurrent() {
 		return !RaceStatus.CLOSE.equals(this.status);
+	}
+	
+	public void setBestLap(final Lap lap) {
+		this.bestLap = lap;
 	}
 }

@@ -5,6 +5,10 @@ import java.time.LocalTime;
 
 import lombok.Getter;
 
+/**
+ * @author renandpf
+ *
+ */
 @Getter
 public class Lap {
 	private Long id;
@@ -12,6 +16,8 @@ public class Lap {
 	private LocalTime time;
 	private Duration duration;
 	private Double averageSpeed;
+	private boolean best;
+	private boolean worst;
 	
 	private Pilot pilot;
 	private Race race;
@@ -27,5 +33,15 @@ public class Lap {
 		this.averageSpeed = averageSpeed;
 		this.pilot = pilot;
 		this.duration = duration;
+		this.best = false;
+		this.worst = false;
+	}
+	
+	public void setBest() {
+		this.best = true;
+	}
+	
+	public void setWorst() {
+		this.worst = true;
 	}
 }

@@ -20,14 +20,23 @@ public class LoadRaceData {
 	private CreateLap createLap; 
 	
 	@Autowired
+	private IdentifyBestLap identifyBestLap;
+	
+	@Autowired
 	private DataBaseGateway dataBaseGateway; 
 
 	public Race loadData() {
+		loadLapsFromFile();
+		
+		final Race currentRace = this.dataBaseGateway.getCurrentRace().orElseThrow();//TODO - Tratar fallbacks
+		this.identifyBestLap.identify(currentRace);
+		
+		return currentRace;
+	}
+
+	private void loadLapsFromFile() {
 		final String logFile = "race.log";
 		final List<Lap> laps =  this.raceFileLogGateway.getLapsFromFile(logFile);
-		
 		laps.forEach(l -> this.createLap.create(l));
-		
-		return this.dataBaseGateway.getCurrentRace().orElseThrow();//TODO - Tratar fallbacks
 	}
 }
