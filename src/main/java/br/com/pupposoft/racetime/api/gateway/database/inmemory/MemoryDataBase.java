@@ -16,7 +16,9 @@ public class MemoryDataBase implements DataBaseGateway {
 	
 	@Override
 	public Optional<Race> getCurrentRace() {
-		return this.rides.stream().filter(Race::isCurrent).findFirst();
+		return this.rides.stream()
+				.filter(Race::isCurrent)
+				.findFirst();
 	}
 
 	@Override

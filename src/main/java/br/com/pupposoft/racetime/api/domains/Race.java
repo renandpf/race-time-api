@@ -37,6 +37,6 @@ public class Race {
 	}
 	
 	public boolean isCurrent() {
-		return RaceStatus.OPEN.equals(this.status);
+		return !RaceStatus.CLOSE.equals(this.status);
 	}
 }
