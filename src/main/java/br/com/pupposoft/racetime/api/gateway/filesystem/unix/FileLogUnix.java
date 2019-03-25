@@ -31,7 +31,8 @@ public class FileLogUnix implements RaceFileLogGateway {
 	}
 	
 	public List<Lap> getLapsFromFile(final String fileName){
-		final List<String> lines = this.fileStreamUsingFiles(fileName);
+		Path targetLocation = this.fileStorageLocation.resolve(fileName);
+		final List<String> lines = this.fileStreamUsingFiles(targetLocation.toString());
 		final List<LapDto> lapsDto = lines.stream().map(LapDto::new).collect(Collectors.toList());
 		return lapsDto.stream().map(lDto -> {
 			Pilot pilot = new Pilot(lDto.getPilotCode(), lDto.getPilotName());

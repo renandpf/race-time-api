@@ -1,10 +1,17 @@
 package br.com.pupposoft.racetime.api.usecase;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import br.com.pupposoft.racetime.api.domains.Lap;
 import br.com.pupposoft.racetime.api.domains.Race;
+import br.com.pupposoft.racetime.api.gateway.database.DataBaseGateway;
 import br.com.pupposoft.racetime.api.gateway.filesystem.RaceFileLogGateway;
+import br.com.pupposoft.racetime.api.gateway.http.json.race.ResponseRaceJson;
 
+@Service
 public class LoadRaceData {
 	
 	@Autowired
@@ -12,12 +19,16 @@ public class LoadRaceData {
 	
 	@Autowired
 	private CreateLap createLap; 
+	
+	@Autowired
+	private DataBaseGateway dataBaseGateway; 
 
 	public Race loadData() {
-		//this.raceFileLogGateway.getLapsFromFile(fileName)
+		final String logFile = "race.log";
+		final List<Lap> laps =  this.raceFileLogGateway.getLapsFromFile(logFile);
 		
+		laps.forEach(l -> this.createLap.create(l));
 		
-		return null;
+		return this.dataBaseGateway.getCurrentRace().orElseThrow();//TODO - Tratar fallbacks
 	}
-	
 }

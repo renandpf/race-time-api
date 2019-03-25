@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.pupposoft.racetime.api.gateway.filesystem.RaceFileLogGateway;
+import br.com.pupposoft.racetime.api.domains.Race;
+import br.com.pupposoft.racetime.api.gateway.http.json.race.ResponseRaceJson;
+import br.com.pupposoft.racetime.api.usecase.LoadRaceData;
 
 @Scope("request")
 @RestController
@@ -16,12 +18,11 @@ import br.com.pupposoft.racetime.api.gateway.filesystem.RaceFileLogGateway;
 public class RaceController {
 	
 	@Autowired
-	private RaceFileLogGateway raceFileLogGateway;
+	private LoadRaceData loadRaceData;
 	
 	@GetMapping
-	public void get() {
-		
-		//this.raceFileLogGateway.getLapsFromFile(fileName)
-
+	public ResponseRaceJson get() {
+		final Race currentRace = this.loadRaceData.loadData(); 
+		return new ResponseRaceJson(currentRace);
 	}
 }
