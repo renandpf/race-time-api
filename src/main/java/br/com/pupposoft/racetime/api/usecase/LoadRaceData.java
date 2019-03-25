@@ -33,11 +33,12 @@ public class LoadRaceData {
 	private DataBaseGateway dataBaseGateway; 
 
 	public Race loadData() {
-		loadLapsFromFile();
+		this.loadLapsFromFile();
 		
 		final Race currentRace = this.dataBaseGateway.getCurrentRace().orElseThrow();//TODO - Tratar fallbacks
 		this.identifyBestAndWorstLap.identify(currentRace);
 		this.calculateDurationLapsByPilot.calculate(currentRace);
+		this.sortByWinner.sort(currentRace);		
 		
 		return currentRace;
 	}

@@ -44,7 +44,8 @@ public class ResponseRaceJson {
 				new PilotJson(	race.getWorstLap().getPilot().getId(), 
 								race.getWorstLap().getPilot().getNome()));
 		
-		this.pilots = race.getPilots().stream().map(PilotJson::new).collect(Collectors.toList());
+		//this.pilots = race.getPilots().stream().map(PilotJson::new).collect(Collectors.toList());
+		this.pilots = race.getRanking().stream().map(PilotJson::new).collect(Collectors.toList());
 	}
 
 }

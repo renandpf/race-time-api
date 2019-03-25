@@ -6,7 +6,6 @@ import java.time.Duration;
 import java.time.LocalTime;
 
 import org.junit.Test;
-import org.springframework.stereotype.Service;
 
 import br.com.pupposoft.racetime.api.domains.Lap;
 import br.com.pupposoft.racetime.api.domains.Pilot;

@@ -1,6 +1,7 @@
 package br.com.pupposoft.racetime.api.usecase;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,8 +16,10 @@ public class SortByWinner {
 		final List<Pilot> allPilotsWithAllValidLaps = this.getClassifedPilots(race);
 		final List<Pilot> allPilotsWithAnyInValidLaps = this.getUnClassifedPilots(race);
 		
-		//List<Pilot> ranking =
-		//allPilotsWithAllValidLaps.stream().
+		final List<Pilot> ranking = allPilotsWithAllValidLaps.stream().sorted(Comparator.comparing(Pilot::getDuration)).collect(Collectors.toList());
+		ranking.addAll(allPilotsWithAnyInValidLaps);// TODO - Classificar este também
+		
+		race.setRanking(ranking);
 	}
 
 	private List<Pilot> getClassifedPilots(final Race race) {

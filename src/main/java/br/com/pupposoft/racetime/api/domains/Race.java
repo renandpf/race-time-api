@@ -2,6 +2,7 @@ package br.com.pupposoft.racetime.api.domains;
 
 import java.time.LocalTime;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 import br.com.pupposoft.racetime.api.domains.enums.RaceStatus;
@@ -15,6 +16,7 @@ public class Race {
 	private LocalTime close;
 	private RaceStatus status;
 	private Set<Pilot> pilots;
+	private List<Pilot> ranking;
 	private Lap bestLap;
 	private Lap worstLap;
 	
@@ -50,5 +52,9 @@ public class Race {
 	
 	public void setWorstLap(final Lap lap) {
 		this.worstLap = lap;
+	}
+	
+	public void setRanking(final List<Pilot> ranking) {
+		this.ranking = ranking;
 	}
 }
