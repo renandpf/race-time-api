@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.pupposoft.racetime.api.domains.Race;
+import br.com.pupposoft.racetime.api.gateway.database.DataBaseGateway;
 import br.com.pupposoft.racetime.api.gateway.http.json.race.ResponseRaceJson;
 import br.com.pupposoft.racetime.api.usecase.LoadRaceData;
 
@@ -20,9 +21,16 @@ public class RaceController {
 	@Autowired
 	private LoadRaceData loadRaceData;
 	
+	@Autowired
+	private DataBaseGateway dataBaseGateway;
+	
 	@GetMapping
 	public ResponseRaceJson get() {
-		final Race currentRace = this.loadRaceData.loadData(); 
-		return new ResponseRaceJson(currentRace);
+		final Race currentRace = this.loadRaceData.loadData();
+		final ResponseRaceJson response = new ResponseRaceJson(currentRace);
+		
+		this.dataBaseGateway.clean();
+		
+		return response;
 	}
 }

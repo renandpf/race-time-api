@@ -1,5 +1,7 @@
 package br.com.pupposoft.racetime.api.usecase;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +18,6 @@ public class CreateLap {
 	
 	public void create(final Lap lap) {
 		final Race race = this.getCurrentRaceOrCreateNew.getOrCreate(lap.getTime());
-		race.setRanking(null);
 		this.updateRace.update(race, lap);
 	}
 }

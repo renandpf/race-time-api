@@ -8,4 +8,5 @@ public interface DataBaseGateway {
 	Optional<Race> getCurrentRace();
 	void createNewRace(final Race newRace);
 	void updateRace(Race race);
+	void clean();
 }

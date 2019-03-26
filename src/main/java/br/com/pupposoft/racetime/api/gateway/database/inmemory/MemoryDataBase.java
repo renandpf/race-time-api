@@ -33,4 +33,9 @@ public class MemoryDataBase implements DataBaseGateway {
 		// TODO Auto-generated method stub
 	}
 
+	@Override
+	public void clean() {
+		this.rides = new ArrayList<>();
+	}
+
 }
