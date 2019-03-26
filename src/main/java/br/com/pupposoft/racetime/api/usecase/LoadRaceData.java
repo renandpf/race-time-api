@@ -36,7 +36,6 @@ public class LoadRaceData {
 
 	public Race loadData() {
 		this.loadLapsFromFile();
-		
 		final Race currentRace = this.dataBaseGateway.getCurrentRace().orElseThrow();//TODO - Tratar fallbacks
 		this.identifyBestAndWorstLap.identify(currentRace);
 		this.calculateDurationLapsByPilot.calculate(currentRace);

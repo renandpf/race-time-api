@@ -13,6 +13,7 @@ import br.com.pupposoft.racetime.api.domains.Race;
 @Service
 public class SortByWinner {
 	public void sort(final Race race) {
+		race.setRanking(new ArrayList<>());//Clear
 		final List<Pilot> allPilotsWithAllValidLaps = this.getClassifedPilots(race);
 		final List<Pilot> allPilotsWithAnyInValidLaps = this.getUnClassifedPilots(race);
 		

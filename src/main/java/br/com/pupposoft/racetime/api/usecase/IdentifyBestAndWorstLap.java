@@ -15,7 +15,6 @@ public class IdentifyBestAndWorstLap {
 
 	public void identify(final Race race) {
 		
-		
 		final List<Lap> onlyBetterAndWorsts = new ArrayList<>();
 		race.getPilots().forEach(p -> {
 			p.getLaps().stream().min(Comparator.comparing(Lap::getDuration)).get().setBest();

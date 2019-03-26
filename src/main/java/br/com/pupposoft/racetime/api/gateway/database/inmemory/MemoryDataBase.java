@@ -23,6 +23,8 @@ public class MemoryDataBase implements DataBaseGateway {
 
 	@Override
 	public void createNewRace(Race newRace) {
+		//TODO - implementar multiplas corridas
+		this.rides = new ArrayList<>();
 		this.rides.add(newRace);
 	}
 

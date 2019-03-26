@@ -16,6 +16,7 @@ public class CreateLap {
 	
 	public void create(final Lap lap) {
 		final Race race = this.getCurrentRaceOrCreateNew.getOrCreate(lap.getTime());
+		race.setRanking(null);
 		this.updateRace.update(race, lap);
 	}
 }
