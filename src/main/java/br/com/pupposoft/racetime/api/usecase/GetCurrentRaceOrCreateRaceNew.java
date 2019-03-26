@@ -16,10 +16,10 @@ public class GetCurrentRaceOrCreateRaceNew {
 	private DataBaseGateway dataBaseGateway;
 	
 	public Race getOrCreate(final LocalTime start) {
-//		Optional<Race> optionalRace = this.dataBaseGateway.getCurrentRace();
-//		if(optionalRace.isPresent()) {
-//			return optionalRace.get();
-//		}
+		Optional<Race> optionalRace = this.dataBaseGateway.getCurrentRace();
+		if(optionalRace.isPresent()) {
+			return optionalRace.get();
+		}
 		final Race newRace = this.createNew(start);
 		this.dataBaseGateway.createNewRace(newRace);
 		return newRace;

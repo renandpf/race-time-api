@@ -12,6 +12,7 @@ import br.com.pupposoft.racetime.api.gateway.filesystem.RaceFileLogGateway;
 
 @Service
 public class LoadRaceData {
+	public static final String logFile = "race.log";
 	
 	@Autowired
 	private RaceFileLogGateway raceFileLogGateway;

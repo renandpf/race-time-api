@@ -17,6 +17,7 @@ import br.com.pupposoft.racetime.api.domains.Lap;
 import br.com.pupposoft.racetime.api.domains.Pilot;
 import br.com.pupposoft.racetime.api.gateway.filesystem.RaceFileLogGateway;
 import br.com.pupposoft.racetime.api.gateway.filesystem.dto.LapDto;
+import br.com.pupposoft.racetime.api.usecase.LoadRaceData;
 
 @Service
 public class FileLogUnix implements RaceFileLogGateway {
@@ -57,7 +58,7 @@ public class FileLogUnix implements RaceFileLogGateway {
 	
 	public String storeFile(final MultipartFile file) {
         // Normalize file name
-        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+        String fileName = StringUtils.cleanPath(LoadRaceData.logFile);
 
         try {
             // Check if the file's name contains invalid characters
